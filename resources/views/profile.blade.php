@@ -31,7 +31,7 @@
                 </div>
                 <div class="s-head-txt">
                     <h3>{{$user->username}}</h3>
-                    <p style="font-size: small">{{$user->tweets->count()}} Tweets</p>
+                    <p style="font-size: small">{{$user->tweets->count()}} Post</p>
                 </div>
             </div>
 
@@ -41,7 +41,7 @@
 
             <div class="profile-picture">
                 <div class="pp-cnt">
-                    <img onclick="showPhoto()" class="profile-photo" src="{{auth()->user()->profile->pphoto ? asset('storage/' . auth()->user()->profile->pphoto) : asset('images/default.jpeg')}}" alt="">
+                    <img onclick="showPhoto()" class="profile-photo" src="{{auth()->user()->profile->pphoto ? asset('storage/' . auth()->user()->profile->pphoto) : asset('images/default.png')}}" alt="">
                     <button onclick="edit()" class="button">Edit Profile</button>
                 </div>
             </div>
@@ -255,7 +255,7 @@
     <form action="/profile" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PATCH')
-        <label class="profile-photo-label" for="pphoto">Change Profile Photo</label>
+        <label class="profile-photo-label" for="pphoto" style="color: rgb(64, 64, 64)">Change Profile Photo</label>
         <input style="display: none" class="edit" type="file" name="pphoto" id="pphoto">
         @error('pphoto')
         <p style="font-size: small">{{$message}}</p>
@@ -271,7 +271,7 @@
 </div>
 <div class="photo-display">
     <p style="cursor: pointer; font-size: 30px; width: 3%; margin-left: 90%; margin-bottom:6%" onclick="exitPhoto()">&times</p>
-    <img class="big-photo" src="{{auth()->user()->profile->pphoto ? asset('storage/' . auth()->user()->profile->pphoto) : asset('storage/profilePhoto/default.jpeg')}}" alt="">
+    <img class="big-photo" src="{{auth()->user()->profile->pphoto ? asset('storage/' . auth()->user()->profile->pphoto) : asset('storage/profilePhoto/default.png')}}" alt="">
 </div>
 
 <script src="profile.js"></script>
